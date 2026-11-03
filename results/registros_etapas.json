@@ -1,0 +1,15 @@
+{
+  "gbif_bruto": 263,
+  "gbif_sem_data_valida": 0,
+  "gbif_apos_remover_ABSENT": 263,
+  "gbif_na_janela_IOP1": 7,
+  "gbif_na_janela_IOP2": 12,
+  "gbif_incerteza_coord_mediana_m": 2342.0,
+  "sibbr": "falhou (HTTPError: 502 Server Error: Bad Gateway for url: https://biocache-ws.sibbr.gov.br/occurrences/search?q=taxon_n)",
+  "antes_dedup": 19,
+  "apos_dedup_e_bbox": 19,
+  "artigo_n_registros": 54,
+  "diferenca_vs_artigo": -35,
+  "razao_vs_artigo": 0.35,
+  "muito_diferente": true
+}

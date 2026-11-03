@@ -1,6 +1,14 @@
 # NOTAS — replicação do Confident Learning (Miyaji, Almeida e Corrêa)
 
-Estado: **bloqueado na etapa 2** (API de ocorrências do GBIF fora do ar em 02–03/11/2026; ver "Pendências").
+Estado: **parado na etapa 2 pelo critério de contagem** (pipeline não rodou com dados reais).
+
+## Registros de presença (resultado real, `results/gbif_consulta.json` e `results/registros_etapas.json`)
+- GBIF (pygbif, consulta de 03/11/2026, retângulo do CSV, `hasCoordinate=True`, anos 2014–2015): **263** registros (45 em 2014; 218 em 2015), todos eBird/HUMAN_OBSERVATION, sem ausências.
+- Nas janelas dos voos (IOP1 01/02–31/03; IOP2 15/08–15/10, 2014): **19** registros (7 na IOP1; 12 na IOP2). Após deduplicar: 19 (apenas 12 coordenadas arredondadas distintas a 3 casas).
+- SiBBr/ICMBio: 502 (Bad Gateway); sem registros adicionais.
+- Artigo: 54. Diferença: **−35 (35% do artigo)** ⇒ `03_registros.py` parou (limite ±50%).
+- Incerteza de coordenada mediana: 2342 m — grande frente à grade (~100 m).
+- Hipóteses para a diferença: o artigo usou ICMBio (não obtido) além do GBIF; pode ter usado 2015 (o CSV só tem 2014 — não dá para juntar); janelas/critério de data diferentes; ou outra consulta/data do GBIF. Dados disponíveis não permitem decidir.
 
 ## Fontes
 - O PDF do SBBD 2023 **não está na pasta**; usei a versão estendida (JIDM 2025, doi 10.5753/jidm.2025.4230) colada na conversa. Os alvos numéricos do SBBD (Tabela 2, t0/t1, Q) vieram do enunciado.
@@ -35,5 +43,5 @@ Estado: **bloqueado na etapa 2** (API de ocorrências do GBIF fora do ar em 02�
 ## Pendências / problemas
 - **GBIF**: `api.gbif.org/v1/occurrence/search` devolve 503 para qualquer consulta (inclusive `?limit=1`), enquanto `species/match` e `occurrence/count` respondem 200. O `01_gbif.py` tenta de novo por ~40 min e esgotou. Alternativa: pedir **download com DOI** no site do GBIF (filtros: *Coragyps atratus*, 2014, polígono do CSV, com coordenadas) e salvar como `data/gbif_raw.csv`.
 - **SiBBr/ICMBio**: `biocache.sibbr.gov.br` devolveu 502; não confirmei endpoint válido. `03_registros.py` tenta e segue só com GBIF se falhar.
-- Comparação com os 54 registros e o critério de parada (±50%) só podem ser avaliados depois que houver dados reais.
+- Decisão pendente: seguir com 19 registros (`03_registros.py --ignorar-contagem`) ou buscar mais registros (ICMBio/SiBBr via download) antes de continuar.
 - Tempo: um teste de fumaça com presenças **fictícias** (só no scratchpad, nunca em `results/`) levou >10 min por semente; 10 sementes podem passar de 1–2 h. Pode ser preciso subsample/solver mais rápido.
