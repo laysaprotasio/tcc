@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+goamazon-climatic-data-202107.csv
+results/gbif_log.txt

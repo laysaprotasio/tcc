@@ -1,0 +1,91 @@
+{
+  "n_linhas": 422649,
+  "colunas": [
+    "Latitude",
+    "Longitude",
+    "CO",
+    "O3",
+    "NOX",
+    "CPC3010",
+    "Acetonitrile",
+    "Isoprene",
+    "CH4",
+    "Temperature",
+    "IOP"
+  ],
+  "faltantes": {
+    "Latitude": {
+      "n": 0,
+      "pct": 0.0
+    },
+    "Longitude": {
+      "n": 0,
+      "pct": 0.0
+    },
+    "CO": {
+      "n": 27663,
+      "pct": 6.55
+    },
+    "O3": {
+      "n": 29669,
+      "pct": 7.02
+    },
+    "NOX": {
+      "n": 39709,
+      "pct": 9.4
+    },
+    "CPC3010": {
+      "n": 44287,
+      "pct": 10.48
+    },
+    "Acetonitrile": {
+      "n": 42080,
+      "pct": 9.96
+    },
+    "Isoprene": {
+      "n": 42080,
+      "pct": 9.96
+    },
+    "CH4": {
+      "n": 1205,
+      "pct": 0.29
+    },
+    "Temperature": {
+      "n": 36028,
+      "pct": 8.52
+    },
+    "IOP": {
+      "n": 0,
+      "pct": 0.0
+    }
+  },
+  "linhas_completas": 366020,
+  "linhas_completas_por_IOP": {
+    "1": 183194,
+    "2": 182826
+  },
+  "linhas_por_IOP": {
+    "1": 196475,
+    "2": 226174
+  },
+  "bbox": {
+    "lat": [
+      -3.631700000000867,
+      -2.813200000002466
+    ],
+    "lon": [
+      -60.8310000000009,
+      -59.93700000000236
+    ]
+  },
+  "n_lat_unicas": 748,
+  "n_lon_unicas": 1563,
+  "passo_lat_mediano": 0.001499999999686974,
+  "passo_lon_mediano": 0.0005999999993804295,
+  "celulas_unicas_latlon": 422649,
+  "celulas_unicas_por_IOP": {
+    "1": 196475,
+    "2": 226174
+  },
+  "linhas_duplicadas_latlon_IOP": 0
+}

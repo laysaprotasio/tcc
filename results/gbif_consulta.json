@@ -1,0 +1,28 @@
+{
+  "data_consulta": "2026-11-03T03:14:28",
+  "fonte": "GBIF API via pygbif.occurrences.search",
+  "taxonKey_backbone": "Y9SZ",
+  "parametros": {
+    "scientificName": "Coragyps atratus",
+    "geometry": "POLYGON((-60.831 -3.632,-59.937 -3.632,-59.937 -2.813,-60.831 -2.813,-60.831 -3.632))",
+    "hasCoordinate": true,
+    "year": "2014,2015"
+  },
+  "wkt": "POLYGON((-60.831 -3.632,-59.937 -3.632,-59.937 -2.813,-60.831 -2.813,-60.831 -3.632))",
+  "n_total_api": 263,
+  "n_baixado": 263,
+  "occurrenceStatus": {
+    "PRESENT": 263
+  },
+  "basisOfRecord": {
+    "HUMAN_OBSERVATION": 263
+  },
+  "por_ano": {
+    "2015": 218,
+    "2014": 45
+  },
+  "por_dataset": {
+    "eBird": 252,
+    "iNaturalist research-grade observations": 11
+  }
+}
