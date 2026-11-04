@@ -1,0 +1,11 @@
+,acc,acc,recall,recall,auc,auc,ap,ap,bal_acc,bal_acc,frac_podada_treino,frac_podada_treino,n_folds_validos,n_folds_validos
+,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std,mean,std
+protocolo,,,,,,,,,,,,,,
+"A_CL(podado,CV aleat.)",0.8666,0.0009,0.4482,0.0032,0.9032,0.001,,,,,,,,
+"A_original(SMOTE,CV aleat.)",0.7799,0.0005,0.2073,0.0013,0.7516,0.0006,,,,,,,,
+B1_CV_espacial_teste_sem_poda/baseline,0.9661,0.0006,0.022,0.0032,0.6881,0.0099,0.1385,0.0115,0.51,0.0014,,,5.0,0.0
+B1_CV_espacial_teste_sem_poda/smote,0.9354,0.0041,0.2117,0.0014,0.6828,0.01,0.1379,0.0114,0.5858,0.0022,,,5.0,0.0
+B1_CV_espacial_teste_sem_poda/smote_cl,0.8921,0.0085,0.2514,0.0043,0.679,0.0103,0.1353,0.0119,0.5825,0.0041,0.1088,0.0007,5.0,0.0
+B2_holdout_aleatorio_sem_poda/baseline,0.9669,0.0001,0.0134,0.0019,0.7508,0.0052,0.1407,0.0063,0.5063,0.0009,,,,
+B2_holdout_aleatorio_sem_poda/smote,0.9456,0.001,0.2115,0.0071,0.751,0.005,0.1387,0.0059,0.591,0.0037,,,,
+B2_holdout_aleatorio_sem_poda/smote_cl,0.9123,0.0018,0.3032,0.0092,0.7498,0.0059,0.1371,0.0058,0.6181,0.0044,0.106,0.0013,,

@@ -1,4 +1,4 @@
-"""Etapas 5 e 6: protocolo do artigo (CL) + avaliacoes adicionais
+﻿"""Etapas 5 e 6: protocolo do artigo (CL) + avaliacoes adicionais
 (CV espacial, teste sem poda, varias sementes)."""
 import argparse, json, warnings
 import numpy as np, pandas as pd
@@ -62,7 +62,7 @@ def smote(X, y, seed):
 def cl(Xs, ys, seed):
     cv = StratifiedKFold(5, shuffle=True, random_state=seed)
     pp = cross_val_predict(modelo(), Xs, ys, cv=cv, method="predict_proba")
-    issues = find_label_issues(labels=ys.copy(), pred_probs=pp, filter_by="prune_by_noise_rate")
+    issues = find_label_issues(labels=ys.copy(), pred_probs=pp, filter_by="prune_by_noise_rate", n_jobs=1)
     t = [float(pp[ys == j, j].mean()) for j in (0, 1)]          # auto-confianca t_j (Eq. 3 do artigo)
     Q = estimate_joint(labels=ys, pred_probs=pp)               # linhas = rotulo ruidoso, colunas = verdadeiro
     return issues, t, Q
@@ -136,3 +136,4 @@ alvo = {"original": {"acc": .767, "recall": .50, "auc": .781}, "CL": {"acc": .95
 pd.set_option("display.width", 220)
 print(resumo.to_string())
 print(cld.drop(columns="seed").agg(["mean", "std"]).round(4).T.to_string())
+

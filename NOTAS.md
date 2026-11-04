@@ -66,3 +66,29 @@ Estado: **parado na etapa 2 pelo critério de contagem** (pipeline não rodou co
 - O "Original" (76,7% / 50% / 78,1%) é medido **após o SMOTE** (conjunto "modificado apenas com amostras sintéticas"), o que coincide com o protocolo A_original do `05_pipeline.py`. Métricas do tratado: CV 5-fold sobre o conjunto podado.
 - Não descreve: critério de junção, buffer, definição das ausências, origem das 185.305 linhas, tratamento de faltantes. Mesma inconsistência 1:3 (25%) × "23%".
 - Teste das contagens no GBIF hoje (mesma caixa): *C. atratus* 2014=45, 2014–15=263; *T. melancholicus* 2014=31, 2014–15=216. Em 2014 as aves mais frequentes são C. atratus 45, Thraupis episcopus 40, Cacicus cela 33, Pitangus sulphuratus 32 (T. melancholicus fica em 31). Nenhum critério só-GBIF reproduz 54 e 50 ao mesmo tempo. Hipótese compatível (não provada): período = 2014 e o ICMBio teria somado ~9 registros de C. atratus e ~19 de T. melancholicus.
+
+## RESULTADOS (03/11/2026) — 6 configurações × 10 sementes (`results/exp_*/`, `results/comparacao_*.csv`)
+Configuração principal: `ano2014`, IOP 1+2, buffer 2,5 km (3,35% positivos), 40 registros usados (5 sem célula a ≤5 km), 366.020 linhas, 8 preditores → 5 após remover CO, Temperature e CPC3010 por |r|≥0,80 (artigo removeu 3; também 3 aqui).
+
+**(A) Protocolo do artigo (SMOTE → CL → CV aleatória no conjunto podado)**
+| | Acurácia | Revocação | ROC-AUC |
+|---|---|---|---|
+| Artigo, original | 76,7% | 50,0% | 78,1% |
+| Aqui, original (SMOTE) | 78,3% | 30,1% | 77,5% |
+| Artigo, tratado com CL | 95,6% | 75,0% | 95,8% |
+| Aqui, tratado com CL | 89,2% | 61,5% | 94,2% |
+- t0 = 0,794 (artigo 0,799); t1 = 0,382 (artigo 0,331); fração off-diagonal de Q = 20,3% (artigo 24,2%); `prune_by_noise_rate` poda 11,9%.
+- Padrão qualitativo reproduzido (CL "melhora" em todas as métricas); níveis diferentes. Só IOP2: 95,1% / 86,1% / 98,9% (ultrapassa o artigo).
+
+**(B) Avaliações honestas (teste com rótulos originais, sem poda, sem SMOTE; SMOTE e CL só no treino)**
+| | CV espacial (blocos 0,05°) AUC | Revocação | Holdout aleatório AUC | Revocação |
+|---|---|---|---|---|
+| Baseline (sem SMOTE) | 0,748 | 0,000 | 0,769 | 0,000 |
+| SMOTE | 0,754 | 0,252 | 0,773 | 0,298 |
+| SMOTE + CL | 0,759 | 0,369 | 0,777 | 0,423 |
+- O ganho de ROC-AUC do CL é ≈ +0,005 (dentro do ruído); o de revocação vem com queda de acurácia (≈ 92% → 88%). Leitura: a poda remove negativos e desloca o limiar de decisão para "positivo"; não melhora a capacidade de ranquear. Os "95%" do protocolo A vêm de avaliar no conjunto já podado.
+
+**Ressalvas importantes**
+- O desvio-padrão entre sementes é minúsculo (±0,001–0,01) porque as sementes só variam SMOTE e divisões; **não** capturam a incerteza dos ~12–45 pontos de presença originais (cada um vira centenas de linhas por buffer). Não interpretar como estabilidade real. Uma análise por reamostragem dos registros (bootstrap dos avistamentos) seria o próximo passo.
+- Raio do buffer (2,5 km) calibrado para dar ≈3,3% (suposição); janela de dados e IOP também mudam muito o resultado (ex.: acurácia A_CL de 84,8% a 95,1% entre configurações).
+- Com `janelas` (17 registros usados) os resultados são mais instáveis e o raio necessário sobe (3 a 3,5 km).

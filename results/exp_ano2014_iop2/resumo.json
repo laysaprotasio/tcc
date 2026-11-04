@@ -1,0 +1,83 @@
+{
+  "variaveis_usadas": [
+    "CO",
+    "O3",
+    "NOX",
+    "Acetonitrile",
+    "Isoprene",
+    "CH4",
+    "Temperature"
+  ],
+  "removidas_correlacao": [
+    "CPC3010"
+  ],
+  "n_linhas": 182826,
+  "n_pos": 6255,
+  "cl_media_dp": {
+    "n_smote": {
+      "mean": 235428.0,
+      "std": 0.0
+    },
+    "prop_pos_smote": {
+      "mean": 0.25,
+      "std": 0.0
+    },
+    "t0": {
+      "mean": 0.8194,
+      "std": 0.0003
+    },
+    "t1": {
+      "mean": 0.4583,
+      "std": 0.0008
+    },
+    "Q00": {
+      "mean": 0.6833,
+      "std": 0.0003
+    },
+    "Q01": {
+      "mean": 0.0667,
+      "std": 0.0003
+    },
+    "Q10": {
+      "mean": 0.0653,
+      "std": 0.0003
+    },
+    "Q11": {
+      "mean": 0.1847,
+      "std": 0.0003
+    },
+    "frac_suspeitos_prune_by_noise_rate": {
+      "mean": 0.1078,
+      "std": 0.0002
+    },
+    "frac_offdiag_Q": {
+      "mean": 0.1319,
+      "std": 0.0004
+    }
+  },
+  "artigo": {
+    "original": {
+      "acc": 0.767,
+      "recall": 0.5,
+      "auc": 0.781
+    },
+    "CL": {
+      "acc": 0.956,
+      "recall": 0.75,
+      "auc": 0.958
+    },
+    "t0": 0.799,
+    "t1": 0.331,
+    "Q": [
+      [
+        0.624,
+        0.169
+      ],
+      [
+        0.073,
+        0.134
+      ]
+    ],
+    "frac_incorretos": 0.242
+  }
+}

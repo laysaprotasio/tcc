@@ -1,0 +1,26 @@
+{
+  "iops": [
+    1
+  ],
+  "raio_m": 2500.0,
+  "max_match_m": 5000,
+  "n_linhas": 183194,
+  "n_pos": 5995,
+  "prop_pos": 0.03272487090188543,
+  "artigo": {
+    "n_linhas": 185305,
+    "prop_pos": 0.033
+  },
+  "n_registros_usados": 12,
+  "n_registros_nao_casaram": 5,
+  "dist_registro_celula_m": {
+    "count": 45.0,
+    "mean": 1811.9,
+    "std": 4564.3,
+    "min": 23.3,
+    "25%": 67.3,
+    "50%": 93.5,
+    "75%": 107.1,
+    "max": 25683.5
+  }
+}
