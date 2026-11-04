@@ -45,3 +45,10 @@ Estado: **parado na etapa 2 pelo critério de contagem** (pipeline não rodou co
 - **SiBBr/ICMBio**: `biocache.sibbr.gov.br` devolveu 502; não confirmei endpoint válido. `03_registros.py` tenta e segue só com GBIF se falhar.
 - Decisão pendente: seguir com 19 registros (`03_registros.py --ignorar-contagem`) ou buscar mais registros (ICMBio/SiBBr via download) antes de continuar.
 - Tempo: um teste de fumaça com presenças **fictícias** (só no scratchpad, nunca em `results/`) levou >10 min por semente; 10 sementes podem passar de 1–2 h. Pode ser preciso subsample/solver mais rápido.
+
+## Tentativa de obter mais avistamentos (03/11/2026)
+- GBIF sem filtro de ano, na mesma caixa: 4.642 registros (eBird 4.493; iNaturalist 127; outros ≤13). Por ano: 2012=48, 2013=40, **2014=45**, **2015=218**, 2016=90, 2019=337, 2022=822 (arquivo local `data/gbif_todos_anos.csv`, fora do git).
+- Contagens sob critérios de data diferentes: 2014 nas janelas exatas dos voos = **19**; 2014 só pelo mês (fev, mar, ago, set, out) = 20; 2014 inteiro = **45**; 2014–2015 inteiro = 263; 2014–2015 pelos mesmos meses = 89. Nenhum dá exatamente 54; o mais próximo é 2014 inteiro (45).
+- ICMBio **publica no GBIF** (organização com 4 datasets). Na caixa há só 1 registro de *C. atratus* do ICMBio (SISBio, jun/2012) — fora do período. Logo o ICMBio via GBIF não explica a diferença.
+- SiBBr: o site responde (200), mas os web services (biocache-ws, records-ws) devolvem 502; não automatizável agora.
+- Portal da Biodiversidade do ICMBio: desativado (aviso do próprio portal); dados do ICMBio em migração para o SiBBr.
