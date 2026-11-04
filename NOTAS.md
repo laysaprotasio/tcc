@@ -58,3 +58,11 @@ Estado: **parado na etapa 2 pelo critério de contagem** (pipeline não rodou co
 - `ano2014`: 2014 inteiro, IOP = janela mais próxima no tempo → 45 registros (12 IOP1, 33 IOP2); −9 vs artigo (83%).
 - SUPOSIÇÃO no `ano2014`: registro fora das janelas (ex.: junho) é ligado à IOP cuja janela está temporalmente mais perto (junho → IOP2). Não está no artigo. Registros de jun–dez/2014 e abr/2014 não têm medida de ar da mesma época.
 - Saídas: `data/presencas_janelas.csv`, `data/presencas_ano2014.csv`, `results/registros_etapas_<criterio>.json`.
+
+## Leitura do artigo SBBD 2023 (arquivo enviado em 03/11/2026) — o que ele confirma
+- Fonte dos preditores: Miyaji et al. (2021), a mesma interpolação do Zenodo. Lista 10 variáveis disponibilizadas (temperatura, O3, CO, NOX, CH4, CO2, isopreno, acetonitrila, contagem de partículas, H2O); o CSV tem 8 (sem CO2 e H2O).
+- Inconsistência interna do artigo: a lista inicial só tem "temperatura", mas as variáveis finais incluem temperatura **máxima e mínima**. Como isso foi gerado não está descrito.
+- Fontes de avistamentos: ICMBio (Portal da Biodiversidade, acessado em 14/05/2023) e GBIF (acessado em 14/05/2023). "Mesmo período de análise" e "mesma região"; sem filtros de data descritos. 54 registros distintos de *Coragyps atratus* e 50 de *Tyrannus melancholicus* como as duas espécies mais frequentes.
+- O "Original" (76,7% / 50% / 78,1%) é medido **após o SMOTE** (conjunto "modificado apenas com amostras sintéticas"), o que coincide com o protocolo A_original do `05_pipeline.py`. Métricas do tratado: CV 5-fold sobre o conjunto podado.
+- Não descreve: critério de junção, buffer, definição das ausências, origem das 185.305 linhas, tratamento de faltantes. Mesma inconsistência 1:3 (25%) × "23%".
+- Teste das contagens no GBIF hoje (mesma caixa): *C. atratus* 2014=45, 2014–15=263; *T. melancholicus* 2014=31, 2014–15=216. Em 2014 as aves mais frequentes são C. atratus 45, Thraupis episcopus 40, Cacicus cela 33, Pitangus sulphuratus 32 (T. melancholicus fica em 31). Nenhum critério só-GBIF reproduz 54 e 50 ao mesmo tempo. Hipótese compatível (não provada): período = 2014 e o ICMBio teria somado ~9 registros de C. atratus e ~19 de T. melancholicus.
