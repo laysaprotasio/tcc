@@ -22,3 +22,14 @@ def iop_da_data(d):
     if pd.Timestamp("2014-02-01") <= d <= pd.Timestamp("2014-03-31 23:59:59"): return 1
     if pd.Timestamp("2014-08-15") <= d <= pd.Timestamp("2014-10-15 23:59:59"): return 2
     return 0
+
+
+def iop_mais_proxima(d):
+    """Para o criterio 'ano2014': registro dentro de uma janela -> sua IOP; fora -> IOP cuja janela esta
+    temporalmente mais proxima (em dias). SUPOSICAO nossa, nao descrita no artigo."""
+    i = iop_da_data(d)
+    if i or pd.isna(d): return i
+    j1 = (pd.Timestamp("2014-02-01"), pd.Timestamp("2014-03-31"))
+    j2 = (pd.Timestamp("2014-08-15"), pd.Timestamp("2014-10-15"))
+    dist = lambda j: 0 if j[0] <= d <= j[1] else min(abs((d - j[0]).days), abs((d - j[1]).days))
+    return 1 if dist(j1) <= dist(j2) else 2

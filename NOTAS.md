@@ -52,3 +52,9 @@ Estado: **parado na etapa 2 pelo critério de contagem** (pipeline não rodou co
 - ICMBio **publica no GBIF** (organização com 4 datasets). Na caixa há só 1 registro de *C. atratus* do ICMBio (SISBio, jun/2012) — fora do período. Logo o ICMBio via GBIF não explica a diferença.
 - SiBBr: o site responde (200), mas os web services (biocache-ws, records-ws) devolvem 502; não automatizável agora.
 - Portal da Biodiversidade do ICMBio: desativado (aviso do próprio portal); dados do ICMBio em migração para o SiBBr.
+
+## Opção C implementada: dois critérios de data (`03_registros.py --criterio`)
+- `janelas`: só datas dos voos → 19 registros (7 IOP1, 12 IOP2); −35 vs artigo.
+- `ano2014`: 2014 inteiro, IOP = janela mais próxima no tempo → 45 registros (12 IOP1, 33 IOP2); −9 vs artigo (83%).
+- SUPOSIÇÃO no `ano2014`: registro fora das janelas (ex.: junho) é ligado à IOP cuja janela está temporalmente mais perto (junho → IOP2). Não está no artigo. Registros de jun–dez/2014 e abr/2014 não têm medida de ar da mesma época.
+- Saídas: `data/presencas_janelas.csv`, `data/presencas_ano2014.csv`, `results/registros_etapas_<criterio>.json`.
